@@ -78,7 +78,7 @@ class InterfaceHandlerAndPublishTest {
                         NotifyBusListenerAutoConfiguration.class))
                 .withBean(BlankTopicHandler.class)
                 .run(runningContext -> assertThat(runningContext).getFailure()
-                        .hasRootCauseInstanceOf(ConfigurationException.class));
+                        .isInstanceOf(ConfigurationException.class));
     }
 
     @Configuration
