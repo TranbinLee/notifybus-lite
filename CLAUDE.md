@@ -38,7 +38,7 @@ notifybus-lite-parent
 ```
 
 - **坐标/前缀**：groupId `com.tranbinlee.notifybus.lite`，基础包 `com.tranbinlee.notifybus.lite`，
-  Spring 配置前缀 `notifybus.lite`，当前版本 `1.0.0-SNAPSHOT`，Spring Boot 2.7.18。
+  Spring 配置前缀 `notifybus.lite`，当前版本 `1.0.0`，Spring Boot 2.7.18。
 - **core 内部包依赖是硬规则**：`api → spi → event → exception`，无循环依赖。
   - `event`：`NotifyBusEvent`（不可变，Builder 构造，含 equals/hashCode）、`ChangeType`。
   - `spi`：`NotifyBusTransport`（publish + subscribeTopic + subscribeResource + close）、`NotifyBusSubscription`、
