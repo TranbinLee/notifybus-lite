@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: notifybus-lite-example-springboot
+  main:
+    banner-mode: "off"
+
+notifybus:
+  lite:
+    enabled: false
+    type: zookeeper
+    namespace: /notifybus-lite-example
+    zk:
+      connect-string: 127.0.0.1:2181
+
+logging:
+  level:
+    com.tranbinlee.notifybus.lite: INFO

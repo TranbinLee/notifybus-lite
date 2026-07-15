@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.tranbinlee.notifybus.lite.starter.NotifyBusAutoConfiguration,\
+com.tranbinlee.notifybus.lite.starter.NotifyBusNoOpAutoConfiguration,\
+com.tranbinlee.notifybus.lite.starter.NotifyBusListenerAutoConfiguration

@@ -1,0 +1,24 @@
+version: "3.8"
+
+# 仅用于本地手动验证 notifybus-lite-example 里的 Spring Boot 示例（发布方 + 消费方合一进程）。
+# 生产环境请直接指向你自己的 ZooKeeper 集群，不要依赖这个 compose 文件。
+#
+# 用法：
+#   docker compose up -d          # 启动一个单节点 ZooKeeper，监听 127.0.0.1:2181
+#   docker compose logs -f zookeeper
+#   docker compose down           # 用完之后清理（默认不挂载持久化卷，容器删除即数据清空）
+services:
+  zookeeper:
+    image: zookeeper:3.8
+    container_name: notifybus-lite-example-zk
+    ports:
+      - "2181:2181"
+    healthcheck:
+      # 官方镜像把 zkServer.sh 放进了 PATH，用它自带的 status 子命令探活，
+      # 不依赖镜像里不一定存在的 nc/netcat。
+      test: ["CMD", "zkServer.sh", "status"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 10s
+    restart: unless-stopped

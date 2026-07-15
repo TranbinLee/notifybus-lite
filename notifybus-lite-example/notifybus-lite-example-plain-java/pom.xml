@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.tranbinlee.notifybus.lite</groupId>
+        <artifactId>notifybus-lite-example</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>notifybus-lite-example-plain-java</artifactId>
+    <packaging>jar</packaging>
+    <name>NotifyBus Lite Example - Plain Java</name>
+    <description>不依赖 Spring：手动 ZkNotifyBusTransportBuilder + NotifyBusPublisher/NotifyBusConsumer 的最小可运行示例</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.tranbinlee.notifybus.lite</groupId>
+            <artifactId>notifybus-lite-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tranbinlee.notifybus.lite</groupId>
+            <artifactId>notifybus-lite-transport-zk</artifactId>
+        </dependency>
+
+        <!--
+            仅供本示例内嵌一个 ZooKeeper 用，让这个 demo 不需要用户预先起一个真实集群就能跑。
+            生产代码绝不应该依赖 curator-test —— 那是测试专用的内嵌 ZK 实现。
+        -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-test</artifactId>
+            <!-- 父 pom 的 dependencyManagement 里 curator-test 默认是 test scope，这里覆盖成 compile，
+                 因为内嵌 ZK 是这个 demo main() 运行时要用到的，不是测试代码。 -->
+            <scope>compile</scope>
+        </dependency>
+
+        <!--
+            非 Spring Boot 环境下没有自动配置好的日志实现，SLF4J 需要应用自己选一个绑定，
+            这里用最简单的 slf4j-simple 把日志打到控制台，方便直接看到 demo 效果。
+        -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.tranbinlee.notifybus.lite.example.plainjava.PlainJavaQuickStartDemo</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

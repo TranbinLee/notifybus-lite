@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.tranbinlee.notifybus.lite</groupId>
+        <artifactId>notifybus-lite-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>notifybus-lite-example</artifactId>
+    <packaging>pom</packaging>
+    <name>NotifyBus Lite Examples</name>
+    <description>最小可运行示例：非 Spring Boot 用法 + Spring Boot 发布方/消费方</description>
+
+    <modules>
+        <module>notifybus-lite-example-plain-java</module>
+        <module>notifybus-lite-example-springboot</module>
+    </modules>
+</project>

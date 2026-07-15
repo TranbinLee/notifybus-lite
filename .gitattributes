@@ -1,0 +1,19 @@
+# 统一换行，避免跨平台（Windows/Unix）clone 后出现整文件换行 diff。
+# 文本文件在仓库内一律存 LF；二进制文件不做转换。
+* text=auto eol=lf
+
+*.java   text eol=lf
+*.xml    text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.md     text eol=lf
+*.properties text eol=lf
+*.factories  text eol=lf
+*.gitignore  text eol=lf
+
+# 二进制
+*.jar    binary
+*.png    binary
+*.jpg    binary
+*.gif    binary
+*.docx   binary
